@@ -1,11 +1,12 @@
 var sellers = [
     {
         "id": 1,
-        "name": "Vinmart",
+        "name": "Vinmart 34T",
         "website": "",
         "location": {
-            "lat": "1.28210155945393",
-            "lng": "103.81722480263163",
+            // 34T
+            "lat": "21.008297",
+            "lng": "105.802547",
         },
         "promotion": [
             {
@@ -19,11 +20,12 @@ var sellers = [
     },
     {
         "id": 2,
-        "name": "Walmart",
+        "name": "Walmart TDH",
         "website": "",
         "location": {
-            "lat": "1.2777380589964",
-            "lng": "103.83749709165197",
+            // Tran Duy Hung
+            "lat": "21.010946",
+            "lng": "105.799102",
         },
         "promotion": [
             {
@@ -37,11 +39,12 @@ var sellers = [
     },
     {
         "id": 3,
-        "name": "Smart",
+        "name": "Times City",
         "website": "",
         "location": {
-            "lat": "1.27832046633393",
-            "lng": "103.83762574759974",
+            // Vinh Tuy
+            "lat": "20.998668",
+            "lng": "105.868369",
         },
         "promotion": [
             {
@@ -55,11 +58,12 @@ var sellers = [
     },
     {
         "id": 4,
-        "name": "Mart",
+        "name": "Yen So",
         "website": "",
         "location": {
-            "lat": "1.27832046633393",
-            "lng": "103.83762574759974",
+            // 20.964281, 105.858772
+            "lat": "20.964281",
+            "lng": "105.858772",
         },
         "promotion": [
             {
@@ -92,9 +96,10 @@ var sellers = [
 ]
 
 exports.suggestion = (user_lat, user_lng, product_ids) => {
+    console.log("List: "+ product_ids.length);
     var recommendShops = sellers.filter(shop => 
         distance(user_lat, user_lng, shop.location.lat, shop.location.lng, "K") < 5 // 5km radius
-        && shop.promotion.find(p => product_ids.includes(p["productId"]))); 
+        && shop.promotion.find(p => product_ids.includes(p.productId))); 
     return recommendShops;
 }
 
@@ -115,7 +120,8 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 		dist = dist * 180/Math.PI;
 		dist = dist * 60 * 1.1515;
 		if (unit=="K") { dist = dist * 1.609344 }
-		if (unit=="N") { dist = dist * 0.8684 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        console.log("Dist: "+ dist);
 		return dist;
 	}
 }

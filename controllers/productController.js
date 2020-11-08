@@ -34,6 +34,7 @@ exports.get_list_product = async (req, res) => {
 };
 
 exports.get_list_recommendation = async (req, res) => {
-    return res.status(200).send(Seller.suggestion(req.params.user_lat, req.req.params.user_lng, req.params.product_ids.split(',')));
+    //21.019761, 105.808498 NCT
+    return res.status(200).send(Seller.suggestion(req.query.user_lat, req.query.user_lng, req.query.product_ids.split(',').map(Number)));
 };
 
